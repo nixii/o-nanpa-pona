@@ -1,0 +1,97 @@
+
+/*
+ * google fonts
+ */
+@import url('https://fonts.googleapis.com/css2?family=Margarine&display=swap');
+@import url('https://lipamanka.gay/linjalipamanka-normal.otf');
+
+/*
+ * set super basic information
+ */
+body, html, #content {
+    color: var(--fg);
+    background-color: var(--bg);
+    font-family: 'Margarine', sans-serif;
+    overflow-x: hidden;
+    inset: 0;
+
+    padding: 0px;
+    margin: 0px;
+}
+
+/*
+ * the content is a flex container
+ */
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+ * swap colors on the top bar
+ */
+#top-bar {
+    color: var(--bg);
+    background-color: var(--fg);
+    display: flex;
+    justify-content: center;
+}
+
+/*
+ * main content should cover the rest of the page
+ */
+#main-content {
+    flex: 1; 
+    padding-left: 20vw;
+    padding-right: 20vw;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/*
+ * shove down the main stuff
+ */
+#text {
+    margin-top: 30vh;
+}
+
+/*
+ * seperate the number systems
+ */
+#number-systems {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid var(--fg);
+    padding-bottom: 8px;
+}
+
+/*
+ * make the button swaps look nice
+ */
+button.number-system {
+    background-color: transparent;
+    border: none;
+    font-family: 'Margarine', sans-serif;
+    color: var(--fg);
+    font-size: large;
+    border-bottom: 1px solid var(--fg);
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+/*
+ * button hover effect
+ */
+button.number-system:hover {
+    color: var(--fg2);
+    cursor: pointer;
+}
+
+/*
+ * sitelen pona font
+ */
+.sp {
+    font-family: 'linja lipamanka', monospace;
+}
