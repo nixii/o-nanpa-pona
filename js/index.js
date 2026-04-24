@@ -6,6 +6,8 @@ const errMessagePona = "o kepeken nanpa";
 const errMessageLasina = "please use a real number";
 const noneMessagePona = "sitelen pona li lon ni";
 const noneMessageLasina = "your result shows here";
+const tooLongPona = "nanpa ni li suli la ike!";
+const tooLongLasina = "this number is too long!";
 
 /*
  * the number input
@@ -76,6 +78,14 @@ function translateNasinNanpaPu(num) {
     // the amount of tus; remainder is the amount of "tu"s
     let tus = Math.floor(remainder / 2);
     remainder = remainder % 2;
+
+    // prevent it being too long
+    if (ales > 50) {
+        return [
+            tooLongPona,
+            tooLongLasina
+        ];
+    }
 
     // convert it into a string
     let finalString = (
@@ -282,4 +292,5 @@ function translateNumber(txt) {
  */
 numberInput.addEventListener("input", (e) => {
     translateNumber(numberInput.value);
+    numberInput.scrollIntoView(false);
 });
