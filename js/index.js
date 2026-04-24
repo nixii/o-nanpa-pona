@@ -2,8 +2,19 @@
 /*
  * constants
  */
-const errMessageLasina = "please use a real number";
 const errMessagePona = "o kepeken nanpa";
+const errMessageLasina = "please use a real number";
+
+/*
+ * the number input
+ */
+const numberInput = document.getElementById("number-input");
+
+/*
+ * load the readout objects
+ */
+const spReadout = document.getElementById("sp-readout");
+const slReadout = document.getElementById("sl-readout");
 
 /*
  * numbers used by nasin nanpa kije
@@ -26,7 +37,7 @@ function translateNasinNanpaKije(txt) {
     let num = parseInt(txt);
 
     // if it isn't a number then return the messages
-    if (num === NaN) {
+    if (num === NaN || num.toString() !== txt) {
         return [
             errMessagePona,
             errMessageLasina
@@ -63,7 +74,7 @@ function translateNasinNanpaPu(txt) {
     let num = parseInt(txt);
 
     // if it isn't a number then return the messages
-    if (num === NaN) {
+    if (num === NaN || num.toString() !== txt) {
         return [
             errMessagePona,
             errMessageLasina
@@ -111,6 +122,7 @@ const numberSystem = {
     },
     pu: {
         button: document.getElementById("button-pu"),
+        method: translateNasinNanpaPu
     },
     kije: {
         button: document.getElementById("button-kije"),
@@ -174,3 +186,34 @@ function useNasinNanpaPu() {
 function useNasinNanpaKijetesantakalu() {
     swapNumberSystem("kije");
 }
+
+/*
+ * translate a new string
+ */
+function translateNumber(txt) {
+
+    // enforce string
+    txt = txt.toString();
+
+    // get the system
+    const system = numberSystem[currentNumberSystem];
+
+    // if the system is not real, ignore it
+    if (typeof(system) == undefined) {
+        return;
+    }
+
+    // translate
+    let res = system.method(txt);
+
+    // set each thing
+    spReadout.innerText = res[0];
+    slReadout.innerText = res[1];
+}
+
+/*
+ * connect the number input
+ */
+numberInput.addEventListener("input", (_) => {
+    translateNumber(numberInput.value);
+});
