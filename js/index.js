@@ -22,6 +22,7 @@ const slReadout = document.getElementById("sl-readout");
 
 /*
  * numbers used by nasin nanpa kije
+ * if I ever add any difference
  */
 const nasinNanpaKijeNumbers = {
     "0": "kijetesantakalu",
