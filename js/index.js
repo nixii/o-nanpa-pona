@@ -6,10 +6,52 @@ const errMessageLasina = "please use a real number";
 const errMessagePona = "o kepeken nanpa";
 
 /*
+ * numbers used by nasin nanpa kije
+ */
+const nasinNanpaKijeNumbers = {
+    "0": "kijetesantakalu",
+    "1": "kijetesantakalu",
+    "2": "kijetesantakalu",
+    "3": "kijetesantakalu",
+    "4": "kijetesantakalu",
+    "5": "kijetesantakalu",
+}
+
+/*
  * translate something to nasin nanpa kijetesantakalu
  */
 function translateNasinNanpaKije(txt) {
 
+    // parse the number
+    let num = parseInt(txt);
+
+    // if it isn't a number then return the messages
+    if (num === NaN) {
+        return [
+            errMessagePona,
+            errMessageLasina
+        ];
+    }
+
+    // convert into base 6
+    let base6String = num.toString(6);
+
+    // final string
+    let finalString = "";
+
+    // translate each char
+    for (let char of base6String) {
+        finalString += nasinNanpaKijeNumbers[char] + " ";
+    }
+
+    // trim it
+    finalString = finalString.trimEnd();
+
+    // return the number
+    return [
+        finalString,
+        finalString
+    ];
 }
 
 /*
