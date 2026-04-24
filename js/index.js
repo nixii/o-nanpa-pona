@@ -240,11 +240,12 @@ function translateNumber(txt) {
     // if it isn't a number then return the messages
     let res = [];
     if (num === NaN || num.toString() !== txt) {
-        if (txt.trim() == "")
+        if (txt.trim() == "") {
             res = [
                 noneMessagePona,
                 noneMessageLasina
             ];
+        }
         else
             res = [
                 errMessagePona,
@@ -274,6 +275,6 @@ function translateNumber(txt) {
 /*
  * connect the number input
  */
-numberInput.addEventListener("input", (_) => {
+numberInput.addEventListener("input", (e) => {
     translateNumber(numberInput.value);
 });
