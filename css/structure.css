@@ -6,6 +6,23 @@
 @import url('https://lipamanka.gay/linjalipamanka-normal.otf');
 
 /*
+ * themes
+ * colorscheme:
+ *   #EF6351
+ *   #F38375
+ *   #F7A399
+ *   #FBC3BC
+ *   #FFE3E0
+ */
+.theme-light-root {
+    --fg: #2C0703;
+    --fg2: #890620;
+    --bg2: #B6465F;
+    --bg: #DA9F93;
+    --bglight: #EBD4CB;
+}
+
+/*
  * set super basic information
  */
 body, html, #content {
@@ -13,7 +30,8 @@ body, html, #content {
     background-color: var(--bg);
     font-family: 'Margarine', sans-serif;
     overflow-x: hidden;
-    inset: 0;
+    width: 100%;
+    height: 100%;
 
     padding: 0px;
     margin: 0px;
@@ -35,6 +53,13 @@ body, html, #content {
     background-color: var(--fg);
     display: flex;
     justify-content: center;
+}
+
+/*
+ * title in the center
+ */
+#title {
+    text-align: center;
 }
 
 /*
