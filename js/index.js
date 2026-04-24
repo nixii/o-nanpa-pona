@@ -4,6 +4,8 @@
  */
 const errMessagePona = "o kepeken nanpa";
 const errMessageLasina = "please use a real number";
+const noneMessagePona = "sitelen pona li lon ni";
+const noneMessageLasina = "sitelen Lasina li lon ni";
 
 /*
  * the number input
@@ -33,15 +35,24 @@ const nasinNanpaKijeNumbers = {
  */
 function translateNasinNanpaKije(txt) {
 
+    // trim the text
+    txt = txt.trim();
+    
     // parse the number
     let num = parseInt(txt);
 
     // if it isn't a number then return the messages
     if (num === NaN || num.toString() !== txt) {
-        return [
-            errMessagePona,
-            errMessageLasina
-        ];
+        if (txt.trim() == "")
+            return [
+                noneMessagePona,
+                noneMessageLasina
+            ];
+        else
+            return [
+                errMessagePona,
+                errMessageLasina
+            ];
     }
 
     // convert into base 6
@@ -70,15 +81,24 @@ function translateNasinNanpaKije(txt) {
  */
 function translateNasinNanpaPu(txt) {
 
+    // trim the text
+    txt = txt.trim();
+
     // parse the number
     let num = parseInt(txt);
 
     // if it isn't a number then return the messages
     if (num === NaN || num.toString() !== txt) {
-        return [
-            errMessagePona,
-            errMessageLasina
-        ];
+        if (txt.trim() == "")
+            return [
+                noneMessagePona,
+                noneMessageLasina
+            ];
+        else
+            return [
+                errMessagePona,
+                errMessageLasina
+            ];
     }
 
     // the amount of ales
@@ -114,11 +134,79 @@ function translateNasinNanpaPu(txt) {
 }
 
 /*
+ * translate using the normal number system
+ */
+function translateNasinNanpaPona(txt) {
+
+    // trim the text
+    txt = txt.trim();
+    
+    // parse the number
+    let num = parseInt(txt);
+
+    // if it isn't a number then return the messages
+    if (num === NaN || num.toString() !== txt) {
+        if (txt.trim() == "")
+            return [
+                noneMessagePona,
+                noneMessageLasina
+            ];
+        else
+            return [
+                errMessagePona,
+                errMessageLasina
+            ];
+    }
+
+    // the amount of ales
+    let ales = Math.floor(num / 100);
+    let remainder = num % 100;
+
+    // the amount of mutes
+    let mutes = Math.floor(remainder / 20);
+    remainder = remainder % 20;
+
+    // the amount of lukas
+    let lukas = Math.floor(remainder / 5);
+    remainder = remainder % 5;
+
+    // the amount of tus; remainder is the amount of "tu"s
+    let tus = Math.floor(remainder / 2);
+    remainder = remainder % 2;
+
+    // prepare the string
+    let finalString = "";
+
+    // add the ales
+    if (ales > 1) {
+        let alesString = translateNasinNanpaPona(ales.toString());
+        finalString += alesString[0] + " ale ";
+    } else if (ales == 1) {
+        finalString += "wan ale ";
+    }
+
+    // add the rest
+    finalString = (finalString
+        + "mute ".repeat(mutes)
+        + "luka ".repeat(lukas)
+        + "tu ".repeat(tus)
+        + "wan ".repeat(remainder))
+        .trimEnd();
+
+    // return the text
+    return [
+        finalString,
+        finalString
+    ];
+}
+
+/*
  * store the number system info
  */
 const numberSystem = {
     pona: {
         button: document.getElementById("button-pona"),
+        method: translateNasinNanpaPona
     },
     pu: {
         button: document.getElementById("button-pu"),
@@ -161,6 +249,9 @@ function swapNumberSystem(to) {
     // enable the new system
     newSystem.button.classList.add("selected");
     currentNumberSystem = to;
+
+    // re-write the number
+    translateNumber(numberInput.value);
 }
 
 /*
