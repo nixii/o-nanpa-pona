@@ -83,7 +83,8 @@ function translateNasinNanpaPu(num) {
     if (ales > 50) {
         return [
             tooLongPona,
-            tooLongLasina
+            tooLongLasina,
+            true
         ];
     }
 
@@ -277,7 +278,7 @@ function translateNumber(txt) {
         res = system.method(Math.abs(num));
 
     // handle negatives
-    if (num < 0) {
+    if (num < 0 && !res[2]) {
         res[0] = "ala anpa " + res[0];
         res[1] = "ala anpa " + res[1];
     }
