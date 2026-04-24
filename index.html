@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/dark.css">
+        <link rel="stylesheet" href="css/light.css">
         <link rel="stylesheet" href="css/structure.css">
         <title>o nanpa pona</title>
     </head>
@@ -22,9 +22,9 @@
 
                     <!-- the options for number systems -->
                     <div id="number-systems">
-                        <button class="number-system selected" onclick="useNasinNanpaPona();">nasin nanpa pona</button>
-                        <button class="number-system" onclick="useNasinNanpaPu();">nasin nanpa pu</button>
-                        <button class="number-system" onclick="useNasinNanpaKijetesantakalu();">kijetesantakalu</button>
+                        <button id="button-pona" class="number-system selected" onclick="useNasinNanpaPona();">nasin nanpa pona</button>
+                        <button id="button-pu" class="number-system" onclick="useNasinNanpaPu();">nasin nanpa pu</button>
+                        <button id="button-kije" class="number-system" onclick="useNasinNanpaKijetesantakalu();">kijetesantakalu</button>
                     </div>
 
                     <!-- the numeral readouts -->
@@ -38,6 +38,6 @@
         </div>
 
         <!-- import the js for interactivity -->
-        <script src="js/index.js" type="text/js"></script>
+        <script src="js/index.js" rel="text/js"></script>
     </body>
 </html>

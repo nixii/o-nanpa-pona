@@ -95,3 +95,10 @@ button.number-system:hover {
 .sp {
     font-family: 'linja lipamanka', monospace;
 }
+
+/*
+ * mark selected value
+ */
+.selected {
+    background-color: var(--bg2) !important;
+}
