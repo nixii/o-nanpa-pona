@@ -5,7 +5,7 @@
 const errMessagePona = "o kepeken nanpa";
 const errMessageLasina = "please use a real number";
 const noneMessagePona = "sitelen pona li lon ni";
-const noneMessageLasina = "sitelen Lasina li lon ni";
+const noneMessageLasina = "your result shows here";
 
 /*
  * the number input

@@ -21,7 +21,7 @@
 
                     <!-- the numeral readouts -->
                     <h1 class="sp" id="sp-readout">sitelen pona li lon ni</h1>
-                    <h3 id="sl-readout">sitelen Lasina li lon ni</h3>
+                    <h3 id="sl-readout">your result shows here</h3>
                     <input type="text" placeholder="Please type a number." id="number-input" autocomplete="off">
 
                     <!-- the options for number systems -->
@@ -33,8 +33,33 @@
 
                     <!-- different docs, explaining a system -->
                     <div id="docs">
-                        <div id="nasin-nanpa-pona-doc" class="system-doc selected">
-                            
+                        <div id="nasin-nanpa-pona-doc" class="system-doc selected-doc">
+                            <h1>nasin nanpa pona</h1>
+                            <h3>
+                                nasin nanpa pona is the primary number system of toki pona.
+                                It uses five words:
+                                <ul>
+                                    <li>wan, meaning one;</li>
+                                    <li>tu, meaning two;</li>
+                                    <li>luka, meaning five;</li>
+                                    <li>mute, meaning twenty;</li>
+                                    <li>and ale, meaning one hundred.</li>
+                                </ul>
+                                The number system is quite simple. For numbers below one hundred,
+                                you simply sum up each word.<br><br>
+                                <span class="example">Example: "mute mute luka luka luka tu wan" -> "58"</span><br><br>
+                                If you want any number larger than one hundred, you need to determine
+                                how many hundreds are within the word, and put that number before
+                                the one hundred.<br><br>
+                                <span class="example">Example: "mute ale mute luka luka wan" -> "2031"</span><br><br>
+                                If the amount of hundreds is greater than one hundred, you simply
+                                use this same method again and concatenate everything.<br><br>
+                                <span class="example">Example: "mute ale ale mute tu" -> "200022"</span><br><br>
+                                That's it! You can use this converter to get a hang for how this
+                                works in practice. Many numbers will require a lot of syllables;
+                                usually you should consider if you need to be that specific before
+                                using that complex of a number!
+                            </h3>
                         </div>
                     </div>
                 </div>
