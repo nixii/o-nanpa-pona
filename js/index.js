@@ -1,5 +1,66 @@
 
 /*
+ * constants
+ */
+const errMessageLasina = "please use a real number";
+const errMessagePona = "o kepeken nanpa";
+
+/*
+ * translate something to nasin nanpa kijetesantakalu
+ */
+function translateNasinNanpaKije(txt) {
+
+}
+
+/*
+ * translate something into nasin nanpa pu
+ */
+function translateNasinNanpaPu(txt) {
+
+    // parse the number
+    let num = parseInt(txt);
+
+    // if it isn't a number then return the messages
+    if (num === NaN) {
+        return [
+            errMessagePona,
+            errMessageLasina
+        ];
+    }
+
+    // the amount of ales
+    let ales = Math.floor(num / 100);
+    let remainder = num % 100;
+
+    // the amount of mutes
+    let mutes = Math.floor(remainder / 20);
+    remainder = remainder % 20;
+
+    // the amount of lukas
+    let lukas = Math.floor(remainder / 5);
+    remainder = remainder % 5;
+
+    // the amount of tus; remainder is the amount of "tu"s
+    let tus = Math.floor(remainder / 2);
+    remainder = remainder % 2;
+
+    // convert it into a string
+    let finalString = (
+        "ale ".repeat(ales)
+        + "mute ".repeat(mutes)
+        + "luka ".repeat(lukas)
+        + "tu ".repeat(tus)
+        + "wan ".repeat(remainder))
+        .trimEnd();
+
+    // return the text
+    return [
+        finalString,
+        finalString
+    ];
+}
+
+/*
  * store the number system info
  */
 const numberSystem = {
@@ -11,6 +72,7 @@ const numberSystem = {
     },
     kije: {
         button: document.getElementById("button-kije"),
+        method: translateNasinNanpaKije
     }
 };
 

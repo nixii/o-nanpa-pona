@@ -119,6 +119,8 @@ button.number-system:hover {
 
     font-size: 20px;
     text-align: center;
+
+    font-family: 'Margarine', sans-serif;
 }
 
 /*
@@ -126,4 +128,14 @@ button.number-system:hover {
  */
 #sp-readout {
     font-size: 4em;
+    margin-bottom: 0px;
+}
+
+/*
+ * dim the sitelen Lasina
+ */
+#sl-readout {
+    color: var(--fg2) !important;
+    font-size: 1.5em;
+    margin-bottom: 8vh;
 }
