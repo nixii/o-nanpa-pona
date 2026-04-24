@@ -176,10 +176,15 @@ button.number-system:hover {
 }
 
 /*
- * style a doc
+ * style a doc, hiding by default
  */
 .system-doc {
     text-align: left;
+    display: none;
+}
+
+.system-doc.selected-doc {
+    display: block;
 }
 
 /*

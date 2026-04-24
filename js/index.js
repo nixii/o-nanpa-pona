@@ -146,15 +146,18 @@ function translateNasinNanpaPona(num) {
 const numberSystem = {
     pona: {
         button: document.getElementById("button-pona"),
-        method: translateNasinNanpaPona
+        method: translateNasinNanpaPona,
+        doc: document.getElementById("nasin-nanpa-pona-doc")
     },
     pu: {
         button: document.getElementById("button-pu"),
-        method: translateNasinNanpaPu
+        method: translateNasinNanpaPu,
+        doc: document.getElementById("nasin-nanpa-pu-doc")
     },
     kije: {
         button: document.getElementById("button-kije"),
-        method: translateNasinNanpaKije
+        method: translateNasinNanpaKije,
+        doc: document.getElementById("nasin-nanpa-kijetesantakalu-doc")
     }
 };
 
@@ -185,9 +188,11 @@ function swapNumberSystem(to) {
 
     // disable the current system
     currentSystem.button.classList.remove("selected");
+    currentSystem.doc.classList.remove("selected-doc");
 
     // enable the new system
     newSystem.button.classList.add("selected");
+    newSystem.doc.classList.add("selected-doc");
     currentNumberSystem = to;
 
     // re-write the number
