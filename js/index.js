@@ -33,27 +33,7 @@ const nasinNanpaKijeNumbers = {
 /*
  * translate something to nasin nanpa kijetesantakalu
  */
-function translateNasinNanpaKije(txt) {
-
-    // trim the text
-    txt = txt.trim();
-    
-    // parse the number
-    let num = parseInt(txt);
-
-    // if it isn't a number then return the messages
-    if (num === NaN || num.toString() !== txt) {
-        if (txt.trim() == "")
-            return [
-                noneMessagePona,
-                noneMessageLasina
-            ];
-        else
-            return [
-                errMessagePona,
-                errMessageLasina
-            ];
-    }
+function translateNasinNanpaKije(num) {
 
     // convert into base 6
     let base6String = num.toString(6);
@@ -79,27 +59,7 @@ function translateNasinNanpaKije(txt) {
 /*
  * translate something into nasin nanpa pu
  */
-function translateNasinNanpaPu(txt) {
-
-    // trim the text
-    txt = txt.trim();
-
-    // parse the number
-    let num = parseInt(txt);
-
-    // if it isn't a number then return the messages
-    if (num === NaN || num.toString() !== txt) {
-        if (txt.trim() == "")
-            return [
-                noneMessagePona,
-                noneMessageLasina
-            ];
-        else
-            return [
-                errMessagePona,
-                errMessageLasina
-            ];
-    }
+function translateNasinNanpaPu(num) {
 
     // the amount of ales
     let ales = Math.floor(num / 100);
@@ -136,27 +96,7 @@ function translateNasinNanpaPu(txt) {
 /*
  * translate using the normal number system
  */
-function translateNasinNanpaPona(txt) {
-
-    // trim the text
-    txt = txt.trim();
-    
-    // parse the number
-    let num = parseInt(txt);
-
-    // if it isn't a number then return the messages
-    if (num === NaN || num.toString() !== txt) {
-        if (txt.trim() == "")
-            return [
-                noneMessagePona,
-                noneMessageLasina
-            ];
-        else
-            return [
-                errMessagePona,
-                errMessageLasina
-            ];
-    }
+function translateNasinNanpaPona(num) {
 
     // the amount of ales
     let ales = Math.floor(num / 100);
@@ -293,9 +233,38 @@ function translateNumber(txt) {
     if (typeof(system) == undefined) {
         return;
     }
+    
+    // parse the number
+    let num = parseInt(txt);
 
-    // translate
-    let res = system.method(txt);
+    // if it isn't a number then return the messages
+    let res = [];
+    if (num === NaN || num.toString() !== txt) {
+        if (txt.trim() == "")
+            res = [
+                noneMessagePona,
+                noneMessageLasina
+            ];
+        else
+            res = [
+                errMessagePona,
+                errMessageLasina
+            ];
+    } 
+
+    // handle zeros
+    else if (num == 0)
+        res = ["ala", "ala"];
+    
+    // translate if it is fine
+    else
+        res = system.method(Math.abs(num));
+
+    // handle negatives
+    if (num < 0) {
+        res[0] = "ala anpa " + res[0];
+        res[1] = "ala anpa " + res[1];
+    }
 
     // set each thing
     spReadout.innerText = res[0];
